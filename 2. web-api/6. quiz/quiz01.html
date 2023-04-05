@@ -36,20 +36,22 @@
 
 
     <script>
-
-        const $checkBox = document.querySelectorAll('input[type=checkbox]'); 
-        for(let $checkbox of input) {
-   
-        $checkBox = addEventListener('click', e => {
-        if()
-        })
-    }
-
-
-
-
-
+        
+        const $check = document.querySelectorAll('input[type=checkbox]');
+        for (let $checkbox of $check) {
+            $checkbox.addEventListener('click', () => {
+                if ($checkbox.checked) {
+                    alert(`동의: ${$checkbox.value}`);
+                }
+            });
+        }
+            // id에 빈공간이면 필수라고 출력하고 빈공간이 아니면
+            // 기억하기 누르라 하고 확인 눌렀을떄 아무것도 안뜨면 끝 
         const $id = document.getElementById('id');
+        const $rm = document.getElementById('remember');
+        const $lastCheck = document.getElementById('check2');
+
+        
 
 
     </script>
