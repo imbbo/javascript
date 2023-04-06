@@ -24,12 +24,12 @@
         $shallowClone.textContent = $apple.textContent;
         $fruits.appendChild($shallowClone);
 
-        // apple의 사본 생성(깊은 복사: 자기 자신을 포함하는 모든 자식을 복사)
+        // // apple의 사본 생성(깊은 복사: 자기 자신을 포함하는 모든 자식을 복사)
 
         const $deepClone = $apple.cloneNode(true);
         $fruits.appendChild($deepClone);
 
-        // ul의 복사
+        // // ul의 복사
         const $ulClone = $fruits.cloneNode(true);
         $fruits.appendChild($ulClone);
 

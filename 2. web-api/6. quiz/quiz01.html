@@ -37,21 +37,49 @@
 
     <script>
         
-        const $check = document.querySelectorAll('input[type=checkbox]');
-        for (let $checkbox of $check) {
-            $checkbox.addEventListener('click', () => {
-                if ($checkbox.checked) {
-                    alert(`동의: ${$checkbox.value}`);
-                }
-            });
-        }
-            // id에 빈공간이면 필수라고 출력하고 빈공간이 아니면
-            // 기억하기 누르라 하고 확인 눌렀을떄 아무것도 안뜨면 끝 
-        const $id = document.getElementById('id');
-        const $rm = document.getElementById('remember');
-        const $lastCheck = document.getElementById('check2');
+        // const $check = document.querySelectorAll('input[type=checkbox]');
+        // for (let $checkbox of $check) {
+        //     $checkbox.addEventListener('click', e => {
+        //         if ($checkbox.checked) {
+        //             alert(`동의: ${$checkbox.value}`);
+        //         }
+        //     });
+        // }
+        //     // id에 빈공간이면 필수라고 출력하고 빈공간이 아니면
+        //     // 기억하기 누르라 하고 확인 눌렀을떄 아무것도 안뜨면 끝 
+        // const $id = document.getElementById('id');
+        // const $rm = document.getElementById('remember');
+        // const $lastCheck = document.getElementById('check2');
 
-        
+        // if()
+
+            const $check = document.querySelectorAll('input[type="checkbox"]');
+            for(let $c of [...$check]) {
+                $c.addEventListener('change', e => {
+                    if(e.target.checked) {
+                        alert(`${e.target.value}번 동의하셨습니다.`);
+                    }
+                })
+            }
+
+    </script>
+
+    <script>
+
+        const $result = document.getElementById('id');
+        const $remember = document.getElementById('remember');
+        // const $lastCheck = document.getElementById('check2');
+
+        document.getElementById('check2').onclick = function(e) {
+            console.log('value값: ' + $result.value);
+            console.log('check값: ' + $remember.checked);
+
+            if($result.value === '') {
+                alert('아이디 입력 하세요');
+            } else if(!$remember.checked) {
+                alert('체크 안하셨습니다');
+            }
+        }
 
 
     </script>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>할 일 목록 만들기</h2>
+
+    <div class="name-form">
+        <h3 class="name-title"></h3>
+        <input type="text" placeholder="이름을 입력하세요." class="name-input">
+        <button class="btn1">확인</button>
+    </div>
+
+    <div class="todo-form">
+        <input type="text" placeholder="당신의 할 일을 적으세요." class="todo-input">
+        <button class="btn2">확인</button>
+    </div>
+
+    <ul class="todo-list">
+
+    </ul>
+
+
+    <script>
+  
+        // const $title = document.querySelector('.name-title');
+        // const $nameForm = document.querySelector('.name-form');
+        // const $input = document.querySelector('.name-input');
+        // const $btn1 = document.querySelector('.btn1');
+
+        // const $todoForm = document.querySelector('.todo-form');
+        // const $input2 = document.querySelector('.todo-input');
+        // const $btn2 = document.querySelector('.btn2');
+        // const $todoList = document.querySelector('.todo-list');
+
+        // $btn1.addEventListener('click', e => {
+        //     if($input.value === '') {
+        //         alert('이름을 입력하세요.');
+        //     } else {
+        //         $title.textContent = $input.value + '님 안녕하세요';
+        //         $btn1.style.display = 'none';
+        //         $input.style.display = 'none';
+        //     }
+        // });
+        // $btn2.addEventListener('click', e => {
+        //     const $newLi = document.createElement('li');
+        //     $newLi.textContent = $input2.value;
+        //     $todoList.appendChild($newLi);
+
+        //     const $delBtn = document.createElement('button')
+        //     $delBtn.textContent= 'X';
+
+        //     $newLi.appendChild($delBtn);
+            
+            
+        // });   **************아직 하는중이니 계속 풀어*************
+
+        const $nameForm = document.querySelector('.name-form');
+        const $btn1 = document.querySelector('.btn1');
+        const $nameInput = document.querySelector('.name-input');
+        const $nameTitle = document.querySelector('.name-title');
+
+        $btn1.addEventListener('click', function() {
+            if($nameInput.value === '') {
+                alert('이름을 입력해 주세요!');
+                return;
+            }
+            $nameTitle.textContent = $nameInput.value + '님 안녕하세요!';
+            $nameInput.style.display = 'none';
+            $btn1.style.display = 'none';
+        });
+
+        const $todoInput = document.querySelector('.todo-input');
+        const $btn2 = document.querySelector('.btn2');
+
+        function createTodo() {
+            //li 생성하고 사용자 입력값 텍스트로 생성.
+            const $li = document.createElement('li');
+            $li.textContent = $todoInput.value;
+
+            //버튼 생성
+            const $delBtn = document.createElement('button');
+            $delBtn.textContent = 'X';
+
+            //li에 X버튼을 넣자
+            $li.appendChild($delBtn);
+
+            //li를 ul에 추가하자
+            document.querySelector('.todo-list').appendChild($li);
+
+            //삭제 버튼 클릭 시 이벤트 발생 (요소 생성 시 이벤트 달기)
+            // $delBtn.addEventListener('click', () => {
+            //     document.querySelector('.todo-list').removeChild($delBtn.parentNode);
+            // });
+            $todoInput.value = '';
+        }
+
+        $btn2.addEventListener('click', createTodo);
+
+        // 생성 이후에 ul 안에서 삭제 버튼 클릭 시 이벤트 발생(이벤트 전파)
+
+        const $ul = document.querySelector('.todo-list');
+
+        $ul.addEventListener('click', e => {
+            if(e.target.matched('li > button')) {
+                return;
+            }
+            $ul.removeChild(e.target.parentNode);
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
