@@ -28,7 +28,7 @@
         <tbody>
             <tr>
                 <td>1</td>
-                <td>첫글</td>
+                <td>첫번째 글</td>
                 <td>hi</td>
                 <td><button>삭제</button></td>
             </tr>
@@ -58,6 +58,27 @@
 	이벤트 전파 방식을 사용해서 
 	삭제를 누를 때마다 해당 tr이 지워질 수 있도록 처리해 보세요.
    */
+
+        const $list = document.querySelector('table tbody');
+        // console.log($list);
+        $list.addEventListener('click', e => {
+            // 매개변수를 선언하지 않으면 이벤트 객체를 못쓰는건가? NO
+            // event라는 이름으로 바로 사용이 가능하다
+            // 근데 웬만하면 이름을 붙여서 쓰는 게 편합니다.
+            // console.log(event.target);
+            if(!e.target.matches('button')) {
+                return;
+            }
+
+            // 삭제 버튼이 눌리면 그 삭제 버튼이 포함된 tr을 날리기
+            // e.target.parentNode.parentNode.remove(); 이거도 됨
+            
+            $list.removeChild(e.target.parentNode.parentNode);
+
+        })
+
+
+
     </script>
 
 </body>

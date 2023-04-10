@@ -35,6 +35,22 @@
 	사진을 클릭할 때마다 결과 화면이 그 사진으로 바뀌면 됩니다. 
 	*/
       
+    const $ul = document.querySelector('ul');
+    const $img = document.querySelector('.result img');
+
+    $ul.addEventListener('click' , e => {
+        if(!e.target.matches('ul > li > img')) {
+            return;
+        }
+
+        $img.setAttribute('src', e.target.getAttribute('src'));
+        // $img.setAttribute('src', e.target.src); 이렇게도 가능
+
+
+    })
+
+
+
 
     </script>
     
